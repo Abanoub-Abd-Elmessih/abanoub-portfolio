@@ -1,95 +1,71 @@
 import Image from "next/image";
-import styles from "./page.module.css";
+import { FaDownload, FaGithub, FaLinkedin, FaPhone } from "react-icons/fa6";
+import style from "./page.module.css";
+import { IoMdMail } from "react-icons/io";
+import { TypingAnimation } from "@/components";
+import { LuMoveUpRight } from "react-icons/lu";
 
 export default function Home() {
+  const links = [
+    {
+      link: "https://www.linkedin.com/in/abanoub-abd-elmessih/",
+      icon: <FaLinkedin />,
+    },
+    { link: "https://github.com/Abanoub-Abd-Elmessih", icon: <FaGithub /> },
+    { link: "mailto:abanoubabdelmessih110@gmail.com", icon: <IoMdMail /> },
+    { link: "tel:+201559566765", icon: <FaPhone /> },
+  ];
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <section className="d-flex flex-column flex-md-row justify-content-center justify-content-md-between align-items-center flex-grow-1">
+      {/* Text Section */}
+      <div>
+        <p className="h4 fw-bold">hello 👋 ,I&apos;m</p>
+        <h3 className="display-5 text-main fw-semibold">Abanoub Abdelmessih</h3>
+        <TypingAnimation
+          sequence={[
+            "Web Developer",
+            2000,
+            "Front-End Developer",
+            2000,
+            "React Developer",
+            2000,
+          ]}
         />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+        <p className="text-muted py-2">
+          Passionate about crafting responsive, modern, and user-friendly
+          websites that provide a great user experience.
+        </p>
+        <div className="buttons">
+          <button className="btn btn-outline-primary me-3">
+            CONTACT ME <LuMoveUpRight />
+          </button>
+          <button className="btn btn-dark ">
+            DOWNLOAD CV <FaDownload />
+          </button>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <ul className="list-unstyled d-flex gap-3 mt-3">
+          {links.map((link) => (
+            <a
+              target="_blank"
+              key={link.link}
+              className={style.contact_links}
+              href={link.link}
+            >
+              {link.icon}
+            </a>
+          ))}
+        </ul>
+      </div>
+      {/* Image Section */}
+      <div>
+        <Image
+          src={"./hero.svg"}
+          alt="hero image"
+          width={550}
+          height={550}
+          className="w-100 d-none d-md-block"
+        />
+      </div>
+    </section>
   );
 }
