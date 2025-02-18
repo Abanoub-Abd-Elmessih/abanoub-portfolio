@@ -21,9 +21,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${outfit.className} ${ovo.className} antialiased`}>
-        <Navbar />
-        {children}
+      <body
+        className={`${outfit.className} ${ovo.className} antialiased leading-8`}
+      >
+        <header>
+          <Navbar />
+        </header>
+        <main className="flex flex-col flex-grow">{children}</main>
       </body>
     </html>
   );

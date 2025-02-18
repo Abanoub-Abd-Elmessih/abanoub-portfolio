@@ -7,6 +7,9 @@ export default {
   ],
   theme: {
     extend: {
+      container: {
+        center: true,
+      },
       colors: {
         lightHover: "#fcf4ff",
         darkHover: "#2a004a",
